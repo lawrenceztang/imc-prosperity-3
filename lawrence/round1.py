@@ -125,20 +125,11 @@ class Logger:
 logger = Logger()
 class Trader:
     def run(self, state: TradingState):
-        # TODO: write the self.trade_ink() function
-        product_function_map = {
-            "RAINFOREST_RESIN": self.trade_resin,
-            "KELP": self.trade_kelp,
-            # "SQUID_INK": self.trade_ink
-        }
-
         result = {}
-        self.log_state(state)
-        for product in state.order_depths:
-            if product in product_function_map:
-                function = product_function_map[product]
-                orders = function(state)
-                result[product] = orders
+
+        # TODO: write the self.trade_ink() function
+        result["KELP"] = self.trade_kelp(state)
+        result["RAINFOREST_RESIN"] = self.trade_resin(state)
 
         trader_data = self.get_trader_data(state)
         conversions = 1
